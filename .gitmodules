@@ -1,0 +1,6 @@
+[submodule "third-party/samurai"]
+	path = third-party/samurai
+	url = git@github.com:yangchris11/samurai.git
+[submodule "third-party/ViTPose"]
+	path = third-party/ViTPose
+	url = https://github.com/ViTAE-Transformer/ViTPose.git

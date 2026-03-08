@@ -1,0 +1,102 @@
+# @package _global_
+
+GENERAL:
+  TOTAL_STEPS: 1000000
+  LOG_STEPS: 100
+  VAL_STEPS: 15000
+  VAL_EPOCHS: 1
+  CHECKPOINT_EPOCHS: 1
+  CHECKPOINT_SAVE_TOP_K: 1
+  NUM_WORKERS: 8
+  PREFETCH_FACTOR: 6
+
+LOSS_WEIGHTS:
+  REG: 0.1
+  RGB: 1.0
+  SILHOUETTE: 0.5
+  LPIPS: 1.0
+
+TRAIN:
+  LR: 2e-4
+  WEIGHT_DECAY: 5e-4
+  GRAD_CLIP_VAL: 0.1
+  WARMUP_STEPS: 3000
+  INITIAL_LR: 1e-10
+  BATCH_SIZE: 2
+  NUM_VIEW: 4
+
+MODEL:
+  BACKBONE:
+    MODEL_WEIGHT: data/dinov3_vitl16_pretrain_lvd1689m-8aa4cbdd.pth
+    TYPE: dinov3_fusion
+    MODEL_NAME: dinov3_vitl16
+    ENCODER_FEAT_DIM: 1024
+    FREEZE: True
+  POINT_EMBEDDING:
+    DIM: 1024
+  DECODER:
+    BLOCK_TYPE: qwen_mm_cond
+    NUM_LAYERS: 5
+    NUM_HEADS: 16
+    INNER_DIM: 1024
+    COND_DIM: 1024
+    MOD_DIM: 1024
+    GRADIENT_CHECKPOINTING: True
+    EPS: 1e-6
+  RENDERER:
+    DROPOUT_FACTOR: 0.0
+    SIGMA_NOISE: 0.0
+    VAREN_MODEL_PATH: data/varen
+    SUBDIVIDE_NUM: 1
+    SMPL_TYPE: smplx
+    FEAT_DIM: 1024
+    QUERY_DIM: 1024
+    USE_RGB: True
+    SH_DEGREE: 3
+    XYZ_OFFSET_MAX_STEP: 1.0
+    MLP_NETWORK_CONFIG:
+      activation: silu
+      n_hidden_layers: 2
+      n_neurons: 512
+    EXPR_PARAM_DIM: 100
+    SHAPE_PARAM_DIM: 10
+    CLIP_SCALING: [100, 0.01, 0.2, 3000]
+    CANO_POSE_TYPE: 1
+    DECODER_MLP: False
+    SKIP_DECODER: True
+    FIX_OPACITY: False
+    FIX_ROTATION: False
+    GRADIENT_CHECKPOINTING: True
+    APPLY_POSE_BLENDSHAPE: False
+
+EXTRA:
+  NUM_LOG_IMAGES: 4
+
+WANDB:
+  PROJECT: HorseAvatar
+  MODE: offline
+
+DATASETS:
+  VarenAvatar:
+    ROOT: /data2/lvjin/cvpr26/data/VarenTex
+    IS_VAL: False
+    WEIGHT: 0.5
+  # VarenWan:
+  #   ROOT: /data2/lvjin/4DEquine/VarenWan
+  #   IS_VAL: False
+  #   WEIGHT: 1.0
+  # Animal4D:
+  #   ROOT: /data2/lvjin/4DEquine/Animal4D
+  #   IS_VAL: False
+  #   WEIGHT: 0.1
+  Animal4DEval:
+    ROOT: /data2/lvjin/4DEquine/Animal4DEval/
+    IS_VAL: True
+  SAMPLE_SIDE_VIEWS: 4
+  RENDER_IMAGE_RES_LOW: 448
+  RENDER_IMAGE_RES_HIGH: 448
+  RENDER_REGION_SIZE: 448
+  SOURCE_IMAGE_RES: 448
+
+trainer:
+  accumulate_grad_batches: 8

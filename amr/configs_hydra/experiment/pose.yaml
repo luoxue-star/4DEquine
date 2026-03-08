@@ -1,0 +1,112 @@
+# @package _global_
+
+defaults:
+  - default_train.yaml
+
+# total steps, log steps, val_steps, num_workers, LR, batch size
+GENERAL:
+  TOTAL_STEPS: 100_000
+  LOG_STEPS: 1000
+  VAL_STEPS: 100
+  VAL_EPOCHS: 10
+  CHECKPOINT_EPOCHS: 1
+  CHECKPOINT_SAVE_TOP_K: 1
+  NUM_WORKERS: 6
+  PREFETCH_FACTOR: 2
+  LIMIT_TRAIN_BATCHES: 159
+
+LOSS_WEIGHTS:
+  KEYPOINTS_3D: 0.05
+  KEYPOINTS_2D: 0.05
+  SMOOTH_NET: 0.001
+  GLOBAL_ORIENT: 0.01
+  POSE: 0.01
+  BETAS: 0.01
+
+TRAIN:
+  LR: 1e-5
+  LR2: 3e-5
+  SCHEDULE: []
+  WARMUP_STEPS: 1000
+  WEIGHT_DECAY: 1e-2
+  LR_DECAY: 1
+  DECAY: 
+  BATCH_SIZE:
+    IMAGE: 16
+    VIDEO: 24
+  SEQ_LEN: 16
+  LOSS_REDUCTION: mean
+  NUM_TRAIN_SAMPLES: 2
+  NUM_TEST_SAMPLES: 64
+
+MODEL:
+  IMAGE_SIZE: 256
+  IMAGE_MEAN: [0.485, 0.456, 0.406]
+  IMAGE_STD: [0.229, 0.224, 0.225]
+  BACKBONE:
+    TYPE: vith
+    PRETRAINED_WEIGHTS: data/pretrain_temporal.pth
+    FINETUNE: False
+  SMAL_HEAD:
+    FINETUNE: True
+    TYPE: transformer_decoder
+    PRETRAINED_WEIGHTS: data/pretrain_temporal.pth
+    IN_CHANNELS: 2048
+    IEF_ITERS: 1
+    TRANSFORMER_DECODER:
+      depth: 6
+      heads: 8
+      mlp_dim: 1024
+      dim_head: 64
+      dropout: 0.0
+      emb_dropout: 0.0
+      norm: layer
+      context_dim: 1280
+  ONLY_TEMPORAL: True
+  RESIDUAL: False
+  TEMPORAL_MODULE:
+    in_dim: 1280
+    out_dim: 1280
+    hdim: 512
+    nlayer: 6
+    nhead: 4
+    residual: True
+  MOTION_MODULE:
+    in_dim: 228
+    out_dim: 228
+    hdim: 384
+    nlayer: 6
+    nhead: 4
+    residual: False
+
+DATASETS:
+  # VARENPOSERVIDEO:
+  #   TAR_PATTERN:
+  #     TRAIN: /data2/lvjin/cvpr26/data/VarenPoser/videov2_tar/dataset_{0000..00002771}.tar.gz
+  #   MASK_PROB: 0.3
+  VARENPOSERVIDEOV2:
+    TAR_PATTERN:
+      TRAIN: /data2/lvjin/cvpr26/data/VarenPoser/videov4_tar/shard_{0000..00001170}.tar.gz
+    MASK_PROB: 0.3
+  APT36K:
+    ROOT_IMAGE: /data2/lvjin/cvpr26/data/AP-36k-patr1/
+    JSON_FILE:
+      TEST:
+        /data2/lvjin/cvpr26/data/AP-36k-patr1/apt36k_horse_tracks.json
+
+MASK_PATTERN: /data2/lvjin/cvpr26/data/VarenPoser/v1/mask_tar/mask_{000000..00000022}.tar
+
+SMAL:
+  MODEL_PATH: data/varen/
+  NUM_JOINTS: 37
+  SHAPE_DIM: 39
+  FOCAL_LENGTH: 5000
+
+EXTRA:
+  FOCAL_LENGTH: 5000
+  NUM_LOG_IMAGES: 4
+  NUM_LOG_SAMPLES_PER_IMAGE: 4
+  PELVIS_IND: 0
+
+WANDB:
+  PROJECT_NAME: AniMerVARENTemporal

@@ -1,0 +1,7 @@
+defaults:
+  - default.yaml
+  - default_amr.yaml
+
+accelerator: gpu
+devices: 1
+limit_train_batches: ${GENERAL.LIMIT_TRAIN_BATCHES}  # How many batches to train on in total.

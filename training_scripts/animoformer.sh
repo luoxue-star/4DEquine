@@ -1,0 +1,1 @@
+python main_pose.py exp_name=animoformer experiment=pose trainer=gpu launcher=local

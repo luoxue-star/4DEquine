@@ -1,0 +1,72 @@
+# @package _global_
+
+DATASETS:
+  ANIMAL3D:
+    ROOT_IMAGE: /data/lvjin/data/animal3d/  # /data/lvjin/data/animal3d/
+    JSON_FILE:
+      TRAIN: /data/lvjin/data/animal3d/train.json  # /data/lvjin/data/animal3d/train.json
+      TEST: /data/lvjin/data/animal3d/test.json  # /data/lvjin/data/animal3d/test.json
+  ANIMALPOSE:
+    ROOT_IMAGE: /data/lvjin/data/dog_test/animal_pose/
+    JSON_FILE: 
+      TEST: /data/lvjin/data/dog_test/animal_pose/test.json
+  CUB:
+    ROOT_IMAGE: data/cub-200-2011/CUB_200_2011/
+    ANNOTATIONS: 
+      TRAIN: data/cub-200-2011/data/train_cub_cleaned.mat
+      TEST: data/cub-200-2011/data/test_cub_cleaned.mat
+    JSON_FILE:
+      TEST: data/cub-200-2011/CUB_200_2011/test.json
+  COWBIRD:
+    ROOT_IMAGE: /data2/lvjin/tpami/data/cowbird/
+    JSON_FILE:
+      TEST: /data2/lvjin/tpami/data/cowbird/test.json
+  CTRLANI3DPLUS:
+    ROOT_IMAGE: /data2/lvjin/tpami/data/control_animal3d_plus
+    JSON_FILE:
+      TEST: /data2/lvjin/tpami/data/control_animal3d_plus/test.json 
+  CONTROL_ANIMAL3D:
+    ROOT_IMAGE: /data/lvjin/data/control_animal3dlatest/
+    JSON_FILE: 
+      TRAIN: /data/lvjin/data/control_animal3dlatest/train.json
+      TEST: /data/lvjin/data/control_animal3dlatest/test.json
+  ANIMAL_KINGDOM:
+    ROOT_IMAGE: /data/lvjin/data/Animal_Kingdom_test/
+    JSON_FILE:
+      TEST: /data/lvjin/data/Animal_Kingdom_test/test.json
+  STANFORDEXTRA:
+    ROOT_IMAGE: /data/lvjin/data/dog_test/StanfordExtra/
+    JSON_FILE: 
+      TEST: /data/lvjin/data/dog_test/StanfordExtra/test.json
+  ANIMAL3DHORSE:
+    ROOT_IMAGE: /data2/lvjin/cvpr26/data/animal3d/
+    JSON_FILE:
+      TEST:
+        /data2/lvjin/cvpr26/data/animal3d/test_horse_varen.json
+  CONFIG:
+    SCALE_FACTOR: 0.0
+    ROT_FACTOR: 0
+    TRANS_FACTOR: 0.0
+    COLOR_SCALE: 0.0
+    ROT_AUG_RATE: 0.0
+    TRANS_AUG_RATE: 0.0
+    DO_FLIP: False
+    FLIP_AUG_RATE: 0.0
+    EXTREME_CROP_AUG_RATE: 0.0
+    EXTREME_CROP_AUG_LEVEL: 1
+
+METRIC:
+  PCK_THRESHOLD: [0.05, 0.10, 0.15]
+  F_ALIGN_SCORE_THRESHOLD: [0.005, 0.015]
+
+DATASETS:
+  APT36K:
+    REFINED_ROOT: outputs/apt36k
+    JSON_DIR: data/apt36k_eval
+  ANIMAL4D:
+    REFINED_ROOT: outputs/animal4d
+    JSON_DIR: data/animal4d_eval
+  VARENPOSER:
+    REFINED_ROOT: outputs/varenposer
+    JSON_DIR: data/varenposer_eval
+    
