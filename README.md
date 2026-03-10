@@ -1,5 +1,5 @@
 # 4DEquine: Disentangling Motion and Appearance for 4D Equine Reconstruction from Monocular Video
-[**Arxiv**]() | [**Project Page**]()
+[**Arxiv**]() | [**Project Page**](https://luoxue-star.github.io/4DEquine_Project_Page/)
 
 ## Environment Setup
 ```bash
