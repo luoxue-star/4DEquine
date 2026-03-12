@@ -59,8 +59,16 @@ bash training_scripts/equinegs.sh
 
 ## Citation
 If you find this code useful for your research, please consider citing the following paper:
-```bash
-
+```bibtex
+@misc{lyu20264dequinedisentanglingmotionappearance,
+      title={4DEquine: Disentangling Motion and Appearance for 4D Equine Reconstruction from Monocular Video}, 
+      author={Jin Lyu and Liang An and Pujin Cheng and Yebin Liu and Xiaoying Tang},
+      year={2026},
+      eprint={2603.10125},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2603.10125}, 
+}
 ```
 
 ## Contact
