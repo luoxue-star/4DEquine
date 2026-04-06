@@ -525,7 +525,7 @@ class HRMEvaluator:
         gt_rgb = torch.from_numpy(np.array(gt_rgb)).to(pred_rgb.device, dtype=pred_rgb.dtype)
         assert pred_rgb.shape == gt_rgb.shape
         side_rgb = side_rgb.detach() if side_rgb is not None else None
-        pred_rgb_, gt_rgb_ = pred_rgb[N // 2:].permute(0, 3, 1, 2).float(), gt_rgb[N // 2:].permute(0, 3, 1, 2).float()
+        pred_rgb_, gt_rgb_ = pred_rgb.permute(0, 3, 1, 2).float(), gt_rgb.permute(0, 3, 1, 2).float()
         psnr, ssim, lpips = self.evaluator._compute_image_metrics(pred_rgb_, gt_rgb_)
         # --- Compute Metrics ---
 
