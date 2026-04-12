@@ -45,7 +45,7 @@ python eval_avatar.py --checkpoint /path/to/checkpoint --out_folder /path/to/out
 ```
 
 ## Training
-Download the [training data](https://drive.google.com/drive/folders/1YDtNaKmueDoyP-NgySrp-BtJR0Pv9ftk?usp=sharing), [AniMer backbone](https://drive.google.com/drive/folders/1YDtNaKmueDoyP-NgySrp-BtJR0Pv9ftk?usp=sharing) and [DINOv3 backbone](https://github.com/facebookresearch/dinov3), then update the dataset paths and backbone paths in `amr/configs_hydra/experiment/pose.yaml` and `amr/configs_hydra/experiment/hrm.yaml`, respectively.
+Download the [training data](https://drive.google.com/drive/folders/1YDtNaKmueDoyP-NgySrp-BtJR0Pv9ftk?usp=sharing), [AniMer backbone](https://drive.google.com/drive/folders/1YDtNaKmueDoyP-NgySrp-BtJR0Pv9ftk?usp=sharing) and [DINOv3 Large backbone](https://github.com/facebookresearch/dinov3), then update the dataset paths and backbone paths in `amr/configs_hydra/experiment/pose.yaml` and `amr/configs_hydra/experiment/hrm.yaml`, respectively.
 
 ### Train AniMoFormer
 ```bash
